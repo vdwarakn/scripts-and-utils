@@ -3,14 +3,14 @@
 The configs in this page will run on Ubuntu. Other distros haven't been tested.
 
 To install the configuration files use the script:
-<code>
+```bash
 bash ./install-container-runtimes.sh
-<code>
+```
 
 The script will add repositories for Docker and K8.
 It will then install required packages and apply the configurations required for Gaudi.
 
-List of files:
+## List of files:
 
 |File Name | Purpose |
 |--|--|
