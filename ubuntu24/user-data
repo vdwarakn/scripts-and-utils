@@ -1,0 +1,115 @@
+#cloud-config
+# See the autoinstall documentation at:
+# https://canonical-subiquity.readthedocs-hosted.com/en/latest/reference/autoinstall-reference.html
+autoinstall:
+  version: 1
+  apt:
+    geoip: true
+    preserve_sources_list: false
+    primary:
+    - arches:
+      - default
+      uri: http://archive.ubuntu.com/ubuntu/
+    security:
+    - arches:
+      - amd64
+      - i386
+      uri: http://security.ubuntu.com/ubuntu/
+  codecs:
+    install: false
+  drivers:
+    install: false
+  kernel:
+    flavor: generic
+  keyboard:
+    layout: us
+    toggle: null
+    variant: ''
+  locale: en_us.utf-8
+  preserve_hostname: true
+  create_hostname_file: false
+  network:
+    ethernets:
+      nics:
+        dhcp-identifier: mac
+        dhcp4: true
+        ## Speeds up boot if only one in multiple NICs is connected
+        optional: true
+        dhcp4-overrides:
+          use-hostname: true
+        dhcp6: false
+        link-local: []
+        match:
+          name: e*
+    renderer: networkd
+    version: 2
+  oem:
+    install: auto
+  ntp:
+    enabled: true
+    ntp_client: systemd-timesyncd
+    servers:
+      - 0.ubuntu.pool.ntp.org
+    #  - corp.ad_server.com
+  packages:
+  - ca-certificates
+  - cloud-guest-utils
+  - cloud-init
+  - curl
+  - e2fsprogs
+  - iproute2
+  - openssh-server
+  - perl
+  - python3
+  - rsync
+  - sudo
+  - unzip
+  - ipmitool
+  - ethtool
+  - nfs-client
+  - cifs-utils
+  - cpufrequtils
+  - jq
+  - moreutils
+  - gettext
+  - python3-virtualenv
+  - python3-venv
+  - python3-pip
+  - python3-pandas
+  - python3-numpy
+  #proxy: http://corp.proxy:port/
+  ssh:
+    allow-pw: true
+    authorized-keys: []
+    install-server: true
+  storage:
+    swap:
+      size: 0
+    layout:
+      name: direct
+      match:
+        path: /dev/nvme0n1
+  updates: all
+  user-data:
+    disable_root: false
+    groups:
+    - docker:
+      - adminuser
+    timezone: "Asia/Kolkata"
+    users:
+    - default
+    - gecos: Admin User with Sudo
+      groups: docker, sudo
+      lock_passwd: false
+      name: adminuser
+      # Pass is r00tme@
+      passwd: $6$Adm1n$LxQEVx0ktJQJuZLg2ZKUIZGtDSLiYm59SRH.MWAcwQ82TgIdcch4h14WpBrjqx.qWarKfRYAb6.4CoEeJMVlv0
+      primary_group: users
+      shell: /bin/bash
+  package_update: true
+  package_upgrade: true
+  early-commands:
+      - systemctl stop ssh.service
+  late-commands:
+      - curtin in-target --target=/target -- rm /etc/hostname
+      - curtin in-target --target=/target -- sed -i 's/GOVERNOR="ondemand"/GOVERNOR="performance"/g' /etc/init.d/cpufrequtils
