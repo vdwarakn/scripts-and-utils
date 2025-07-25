@@ -11,17 +11,17 @@ Line 106: Change password with command <pre>printf 'r00tme@' | openssl passwd -6
 Copy these files to a http server or a USB drive.
 
 1. Create a bootable USB 
-<code> dd conv=sync status=progress bs=4M if=ubuntu-24.04.1-live-server-amd64.iso of=/dev/sdXX</code>
+``` dd conv=sync status=progress bs=4M if=ubuntu-24.04.1-live-server-amd64.iso of=/dev/sdXX```
 2. Insert USB to Node and boot of USB
 3. Add the Boot Menu, type e to edit "Try or Install Ubuntu"
-4. Append the install line to look like this
-<code>
-## If install from HTTP Server
+4. Append the install line to look like this:
+```
+## If installing from HTTP Server
 linux initrd --- autoinstall 'ds=nocloud-net;s=http://http_server_hostname_or_ip/ubuntu24'
 
 ## If Installing from USB
 linux initrd --- autoinstall 'ds=nocloud;s=/cdrom/ubuntu24'
-</code>
+```
 5. After adding the above line, hit Ctrl+x to boot to the installer
 6. It may take a few minutes for installation to start. 
 7. If you see lines starting with 'subiquity/component/.....' thyen the autoinstall is in progress
