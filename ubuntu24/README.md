@@ -9,10 +9,12 @@ The autoinstall scripts are to be used for one-touch install of Ubuntu 24.
 * Line 106: Change password with command <pre>printf 'r00tme@' | openssl passwd -6 -salt 'SaltB@e' -stdin</pre>
 
 
-Copy these files to a http server or a USB drive.
+Copy entire ubuntu24 folder to a http server or a USB drive.
 
 1. Create a bootable USB 
-``` dd conv=sync status=progress bs=4M if=ubuntu-24.04.1-live-server-amd64.iso of=/dev/sdXX```
+```bash
+ dd conv=sync status=progress bs=4M if=ubuntu-24.04.1-live-server-amd64.iso of=/dev/sdXX
+```
 2. Insert USB to Node and boot of USB
 3. Add the Boot Menu, type e to edit "Try or Install Ubuntu"
 4. Append the install line to look like this:
@@ -28,5 +30,6 @@ linux initrd --- autoinstall 'ds=nocloud;s=/cdrom/ubuntu24'
 7. If you see lines starting with <pre>'subiquity/component/.....'</pre> thyen the autoinstall is in progress
 8. If you see an interactive installer, then something went wrong in step 4
 
-After installation, completes, remove the USB and boot to HDD.
+After installation completes, remove the USB and boot to HDD. Your OS is now ready to use
+Default password can be found in the user-data file
 
