@@ -113,3 +113,4 @@ autoinstall:
   late-commands:
       - curtin in-target --target=/target -- rm /etc/hostname
       - curtin in-target --target=/target -- sed -i 's/GOVERNOR="ondemand"/GOVERNOR="performance"/g' /etc/init.d/cpufrequtils
+      - TODO Add grub cmoonad line
