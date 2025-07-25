@@ -1,0 +1,6 @@
+
+## Add your corp proxy here:
+#http_proxy=http://corp.proxy:port
+#https_proxy=http://corp.proxy:port
+#no_proxy=127.0.0.1,localhost,corp.com
+#NO_PROXY=".corp.com,cattle-system.svc,.svc,.cluster.local,127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"

@@ -1,0 +1,14 @@
+{
+   "runtimes": {
+      "habana": {
+         "path": "/usr/bin/habana-container-runtime",
+         "runtimeArgs": []
+      }
+   },
+   "proxies": {
+    "http-proxy": "http://corp.proxy:port",
+    "https-proxy": "http://corp.proxy:port",
+    "no-proxy": ".corp.com,localhost,127.0.0.1"
+  }
+}
+
