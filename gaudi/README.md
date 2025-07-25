@@ -12,9 +12,8 @@ It will then install required packages and apply the configurations required for
 
 List of files:
 
----------------
-|File Name | Purpose |
-----------------------
+| File Name | Purpose |
+|--|--|
 | install-container-runtimes.sh | Installation script |
 | environment | Sample environment file with proxy vars commented out |
 | docker-gaudi-proxy.json | Docker daemon.json with habana-runtime and proxy |
