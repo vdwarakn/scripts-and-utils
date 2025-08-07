@@ -47,7 +47,7 @@ sysctl -p --system
 systemctl daemon-reload
 systemctl enable containerd
 systemctl restart containerd
-cp config.toml-habana -O /etc/containerd/config.toml
+cp config.toml -O /etc/containerd/config.toml
 
 systemctl restart containerd
 systemctl enable --now kubelet
