@@ -1,4 +1,5 @@
 
+LIBPROC_HIDE_KERNEL=1
 ## Add your corp proxy here:
 #http_proxy=http://corp.proxy:port
 #https_proxy=http://corp.proxy:port
