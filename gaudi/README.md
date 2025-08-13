@@ -69,6 +69,7 @@ You should see something like this:
 To install the configuration files use the script:
 ```bash
 sudo bash ./install-container-runtimes.sh
+sudo bash ./grub-setup.sh
 ```
 
 The script will add repositories for Docker and K8.
