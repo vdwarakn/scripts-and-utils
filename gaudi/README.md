@@ -2,8 +2,24 @@
 
 The configs in this page will run on Ubuntu. Other distros haven't been tested.
 
+
+## Install Ubuntu 24.04 OS
+For a baremetal Gaudi hardware, one supported OS is Ubuntu and it needs to be installed on the machine first.
+
+### Option 1: Manual
+1. Create a bootable USB using the Official Ubuntu 24.04 ISO
+2. Boot the Gaudi machine from USB and follow the manual installation process, with 2 changes:
+* Install on the smallest disk attached to the system and also disable LVM
+* This helps to keep the system modular and make it easy to reinstall or upgrade independently
+* Install OpenSSH Server
+* Supply proxy details, if required
+
+### Option 2: Automated
+Use the ubuntu24/ folder from this repo to install Ubuntu from ?USB or HTTP server. 
+The instructions for using either method should be available easily on the internet.
+
 ## Install Gaudi Driver and SW Stack
-Before you install the runtimes, you need to have the Guadi driver and Software stack deployed.
+Before you install the runtimes, you need to have the Gaudi driver and Software stack deployed.
 The latest instructions are available at: https://docs.habana.ai/en/latest/Installation_Guide/Driver_Installation.html
 > **__Note:__** Install OS updates and kernels and reboot before installing the gaudi driver
 
@@ -66,7 +82,7 @@ You should see something like this:
 </pre>
 
 ## Install runtime and other configs
-To install the configuration files use the script:
+To install the configuration files use the scripts:
 ```bash
 sudo bash ./install-container-runtimes.sh
 sudo bash ./grub-setup.sh
