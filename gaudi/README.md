@@ -16,7 +16,7 @@ For a baremetal Gaudi hardware, one supported OS is Ubuntu and it needs to be in
 
 ### Option 2: Automated
 Use the ubuntu24/ folder from this repo to install Ubuntu from ?USB or HTTP server. 
-The instructions for using either method should be available easily on the internet.
+The instructions for using either method are available in the ubuntu24/README.md file
 
 ## Install Gaudi Driver and SW Stack
 Before you install the runtimes, you need to have the Gaudi driver and Software stack deployed.
