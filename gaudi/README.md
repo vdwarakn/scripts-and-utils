@@ -18,22 +18,30 @@ For a baremetal Gaudi hardware, one supported OS is Ubuntu and it needs to be in
 Use the ubuntu24/ folder from this repo to install Ubuntu from ?USB or HTTP server. 
 The instructions for using either method are available in the ubuntu24/README.md file
 
-## Install Gaudi Driver and SW Stack
-Before you install the runtimes, you need to have the Gaudi driver and Software stack deployed.
-The latest instructions are available at: https://docs.habana.ai/en/latest/Installation_Guide/Driver_Installation.html
-> **__Note:__** Install OS updates and kernels and reboot before installing the gaudi driver
-
-It's as simple as:
+## Update OS
+* Boot to the local SSD and load the Ubutnu OS for the first time
+* Install all updates 
 ```bash
+sudo apt update && sudo apt upgrade -y
+```
+* Reboot machine
+
+## Install Gaudi Driver and SW Stack
+The latest instructions for install of Gaudi Driver and stack are available at: https://docs.habana.ai/en/latest/Installation_Guide/Driver_Installation.html
+1. You can alternatively use these steps to install:
+```bash
+## Temporary workaround for key
+curl -fsSL https://vault.habana.ai/artifactory/api/gpg/key/public | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/habanalabs.gpg > /dev/null
+
 GAUDI_SW_VER=1.21.3
 wget -nv https://vault.habana.ai/artifactory/gaudi-installer/${GAUDI_SW_VER}/habanalabs-installer.sh
 sudo bash ./habanalabs-installer.sh install -y
 ```
-After driver is installed, check that the devices are detected by running
+2. After driver is installed, check that the devices are detected by running
 ```bash
 hl-smi
 ```
-You should see something like this:
+3. You should see something like this:
 <pre>
 +-----------------------------------------------------------------------------+
 | HL-SMI Version:                              hl-1.21.1-fw-59.2.3.0          |
@@ -96,6 +104,7 @@ It will then install required packages and apply the configurations required for
 |File Name | Purpose |
 |--|--|
 |install-container-runtimes.sh | Installation script |
+|grub-setup.sh | Script to configure kernel boot time parameters applicable for Gaudi|
 |environment | Sample environment file with proxy vars commented out |
 |docker-gaudi-proxy.json | Docker daemon.json with habana-runtime and proxy |
 |systemctl-containerd.conf | systemctl config override for ContainerD. Use if behind a corporate proxy |
