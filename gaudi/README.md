@@ -33,7 +33,7 @@ The latest instructions for install of Gaudi Driver and stack are available at: 
 ## Temporary workaround for key
 curl -fsSL https://vault.habana.ai/artifactory/api/gpg/key/public | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/habanalabs.gpg > /dev/null
 
-GAUDI_SW_VER=1.21.3
+GAUDI_SW_VER=1.21.4
 wget -nv https://vault.habana.ai/artifactory/gaudi-installer/${GAUDI_SW_VER}/habanalabs-installer.sh
 sudo bash ./habanalabs-installer.sh install -y
 ```
